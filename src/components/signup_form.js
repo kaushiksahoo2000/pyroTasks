@@ -3,19 +3,37 @@ import {reduxForm} from 'redux-form'
 
 import {Link} from 'react-router'
 
-
 class SignupForm extends Component {
   static contextTypes = {
     router: PropTypes.object
   }
 
+  onSubmit(signupData){
+    console.log(signupData)
+  }
+
   render() {
-    const {fields:{entry}, handleSubmit} = this.props
+    const {fields:{firstName, lastName, email}, handleSubmit} = this.props
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <input type="text" {...entry}/>
-        <div>{entry.touched ? entry.error : ''}</div>
+
+        <div>
+          <input type="text" {...firstName} placeholder='first name'/>
+          <div>{firstName.touched ? firstName.error : ''}</div>
+        </div>
+
+        <div>
+          <input type="text" {...lastName} placeholder='last name'/>
+          <div>{lastName.touched ? lastName.error : ''}</div>
+        </div>
+
+        <div>
+          <input type="text" {...email} placeholder='email'/>
+          <div>{email.touched ? email.error : ''}</div>
+        </div>
+
         <button type="submit">Submit</button>
+
       </form>
     )
   }
@@ -23,12 +41,14 @@ class SignupForm extends Component {
 
 function validate(values) {
   const errors = {}
-  if(!values.entry) errors.entry = 'Enter something'
+  if(!values.firstName) errors.firstName = 'Please enter a valid name'
+  if(!values.lastName) errors.lastName = 'Please enter a last name'
+  if(!values.email) errors.email = 'Please enter a valid email'
   return errors
 }
 
 export default reduxForm({
   form: SignupForm,
-  fields: ['First Name', 'Last Name', 'Email'],
+  fields: ['firstName', 'lastName', 'email'],
   validate
-}, null)(SignupForm)
+}, null, {})(SignupForm)
