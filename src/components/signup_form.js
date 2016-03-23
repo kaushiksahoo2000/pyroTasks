@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import {reduxForm} from 'redux-form'
 
 import {Link} from 'react-router'
+import {signup} from '../actions/index'
 
 class SignupForm extends Component {
   static contextTypes = {
@@ -9,27 +10,30 @@ class SignupForm extends Component {
   }
 
   onSubmit(signupData){
-    console.log(signupData)
+    this.props.signup(signupData)
+    .then(() => {
+      this.context.router.push('/dashboard')
+    })
   }
 
   render() {
-    const {fields:{firstName, lastName, email}, handleSubmit} = this.props
+    const {fields:{name, email, password}, handleSubmit} = this.props
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
         <div>
-          <input type="text" {...firstName} placeholder='first name'/>
-          <div>{firstName.touched ? firstName.error : ''}</div>
-        </div>
-
-        <div>
-          <input type="text" {...lastName} placeholder='last name'/>
-          <div>{lastName.touched ? lastName.error : ''}</div>
+          <input type="text" {...name} placeholder='name'/>
+          <div>{name.touched ? name.error : ''}</div>
         </div>
 
         <div>
           <input type="text" {...email} placeholder='email'/>
           <div>{email.touched ? email.error : ''}</div>
+        </div>
+
+        <div>
+          <input type="password" {...password} placeholder='password'/>
+          <div>{password.touched ? password.error : ''}</div>
         </div>
 
         <button type="submit">Submit</button>
@@ -41,14 +45,14 @@ class SignupForm extends Component {
 
 function validate(values) {
   const errors = {}
-  if(!values.firstName) errors.firstName = 'Please enter a valid name'
-  if(!values.lastName) errors.lastName = 'Please enter a last name'
+  if(!values.name) errors.name = 'Please enter your name'
   if(!values.email) errors.email = 'Please enter a valid email'
+  if(!values.password) errors.password = 'Please enter a password'
   return errors
 }
 
 export default reduxForm({
-  form: SignupForm,
-  fields: ['firstName', 'lastName', 'email'],
+  form: "SignupForm",
+  fields: ['name', 'email', 'password'],
   validate
-}, null, {})(SignupForm)
+}, null, {signup} )(SignupForm)
