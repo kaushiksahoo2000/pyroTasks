@@ -1,30 +1,21 @@
-// Express Setup
-var express = require('express');
-var app = express();
+const path = require('path')
+const express = require('express')
+const port = process.env.PORT || 8080
+const app = express()
 
-// Middleware
-var parser = require('body-parser');
-app.use(parser.json());
-var cors = require('cors');
-app.use(cors());
+const parser = require('body-parser')
+app.use(parser.json())
+const cors = require('cors')
+app.use(cors())
 
+app.use(express.static(__dirname + '/../client'))
 
-// Set what we are listening on (Env check)
-app.set("port", process.env.PORT || 8000);
+var router = require('./stub.js') // TODO: switch to router.js for full functionality
+app.use("/api", router)
 
-// Serving static files from client directory. Work around only.
-var dirname = __dirname;
-dirname = dirname.slice(0,-6);
-app.use(express.static(dirname + '/client/'));
+app.get('*', function (request, response){
+  response.sendFile(path.resolve(__dirname, '../client', 'app.html'))
+})
 
-// Connect to Routes
-var router = require('./routes.js');
-app.use("/", router);
-
-// If we are being run directly, run the server
-if (!module.parent) {
-  app.listen(app.get("port"));
-  console.log("Listening on", app.get("port"));
-} else if (module.parent) {
-  module.exports = app;
-}
+app.listen(port)
+console.log("Listening on " + port)

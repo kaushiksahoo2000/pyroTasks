@@ -83,3 +83,4 @@ client/bower_components
 .flooignore
 
 node_modules/
+dist/
