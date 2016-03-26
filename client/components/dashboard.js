@@ -12,7 +12,7 @@ class Dashboard extends Component {
     return this.props.groups.map((group) => {
       return (
         <li key={group.id}>
-
+          <h4>{group.name}</h4>
         </li>
       )
     })
