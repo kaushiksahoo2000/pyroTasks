@@ -1,7 +1,7 @@
 {
   "name": "pyro-tasks",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "start": "webpack -w && nodemon server/server.js",
     "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
@@ -19,6 +19,9 @@
   },
   "dependencies": {
     "axios": "^0.9.1",
+    "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
     "lodash": "^3.10.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
