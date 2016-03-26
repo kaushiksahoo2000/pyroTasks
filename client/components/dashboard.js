@@ -25,7 +25,8 @@ class Dashboard extends Component {
         <ul>
           {this.renderGroups()}
         </ul>
-
+        <Link to='/creategroup'><button>Create Group</button></Link>
+        <Link to='/joingroup'><button>Join Group</button></Link>
       </div>
     )
   }
