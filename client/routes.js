@@ -18,6 +18,7 @@ export default (
     <Route path='login' component={LoginForm}/>
     <Route path='dashboard' component={Dashboard}/>
     <Route path='creategroup' component={CreateGroup}/>
+    <Route path='joingroup' component={JoinGroup}/>
     <Route path='groups/:groupid' component={GroupDetail}/>
     <Route path='tasks/:taskid' component={TaskDetail}/>
   </Route>
