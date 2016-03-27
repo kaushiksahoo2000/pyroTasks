@@ -14,34 +14,53 @@ var storage = {
       // No Group with id 0
     ],
     [
-      {id: 1, name: 'Alpha Task1', owner: 'John Smith'},
-      {id: 2, name: 'Alpha Task2', owner: 'Jim Johnson'}
+      {id: 100, name: 'Alpha Task1', owner: 'John Smith'},
+      {id: 200, name: 'Alpha Task2', owner: 'Jim Johnson'}
     ],
     [
-      {id: 1, name: 'Bravo Task1', owner: 'Jane Smith'},
+      {id: 300, name: 'Bravo Task1', owner: 'Jane Smith'},
     ],
     [
       // Empty Tasklist for Group3
     ]
-  ]
+  ],
+  100: {id: 1, name: 'Alpha Task1', owner: 'John Smith'},
+  200: {id: 2, name: 'Alpha Task2', owner: 'Jim Johnson'},
+  300: {id: 3, name: 'Bravo Task1', owner: 'Jane Smith'},
 }
 
 api.post('/signup', function(req, res){
+  console.log('Successful signup');
   res.sendStatus(201)
 })
 
 api.post('/login', function(req, res){
   if(req.body.username === storage.username && req.body.password === storage.password){
+    console.log('Successful login');
     res.sendStatus(200)
-  } else res.sendStatus(401)
+  } else {
+    console.log('Unsuccessful login');
+    res.sendStatus(401)
+  }
 })
 
+// get all the groups a user belongs to
 api.get('/groups', function(req, res){
+  console.log('Serving up groups');
   res.send(storage.groups);
 })
 
-api.get('/tasks/:groupid', function(req, res){
+// get all the tasks in a specific group
+api.get('/group/:groupid', function(req, res){
+  console.log('Serving up tasks for group ' + req.params.groupid);
   res.send(storage.tasks[req.params.groupid]);
 })
+
+// get info for particular task
+api.get('/task/:taskid', function(req, res){
+  console.log('Serving up task ' + req.params.groupid);
+  res.send(storage[req.params.taskid]);
+})
+
 
 module.exports = api

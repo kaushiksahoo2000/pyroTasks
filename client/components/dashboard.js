@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {fetchGroups} from '../actions/dashboardActions'
 import {Link} from 'react-router'
 
+import GroupEntry from './group_entry'
+
 class Dashboard extends Component {
   componentWillMount() {
     this.props.fetchGroups()
@@ -11,9 +13,7 @@ class Dashboard extends Component {
   renderGroups() {
     return this.props.groups.map((group) => {
       return (
-        <li key={group.id}>
-          <h4>{group.name}</h4>
-        </li>
+        <GroupEntry group={group} key={group.id}/>
       )
     })
   }
