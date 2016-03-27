@@ -7,7 +7,8 @@ import SignupForm from './components/signup_form'
 import LoginForm from './components/login_form'
 import Dashboard from './components/dashboard'
 import CreateGroup from './components/create_group_form'
-import JoinGroup from './components/join_group_form'
+// import JoinGroup from './components/join_group_form'
+import GroupDetail from './components/group_detail'
 
 export default (
   <Route path='/' component={App}>
@@ -16,6 +17,6 @@ export default (
     <Route path='login' component={LoginForm}/>
     <Route path='dashboard' component={Dashboard}/>
     <Route path='creategroup' component={CreateGroup}/>
-    <Route path='joingroup' component={JoinGroup}/>
+    <Route path='groups/:groupid' component={GroupDetail}/>
   </Route>
 )
