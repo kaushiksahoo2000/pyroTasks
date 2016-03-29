@@ -14,16 +14,16 @@ export function fetchGroups () {
   }
 }
 
-export function createGroup () {
-  const request = Axios.post(`${ROOT_URL}/creategroup`)
+export function createGroup (props) {
+  const request = Axios.post(`${ROOT_URL}/groups`, props)
   return {
     type: "CREATE_GROUP",
     payload: request
   }
 }
 
-export function joinGroup () {
-  const request = Axios.post(`${ROOT_URL}/joingroup`)
+export function joinGroup (props) {
+  const request = Axios.put(`${ROOT_URL}/group/:groupid`, props)
   return {
     type: "JOIN_GROUP",
     payload: request

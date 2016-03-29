@@ -1,4 +1,5 @@
 import { FETCH_TASKS } from '../actions/groupActions'
+import { ADD_TASK } from '../actions/groupActions'
 
 const INITIAL_STATE = {all: [], task: null}
 

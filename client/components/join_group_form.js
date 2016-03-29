@@ -12,7 +12,7 @@ class JoinGroupForm extends Component {
   onSubmit(joinGroupData){
     this.props.joinGroup(joinGroupData)
     .then(() => {
-      this.context.router.push('/groups')
+      this.context.router.push('/group/:groupid')
     })
   }
 

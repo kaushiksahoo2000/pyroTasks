@@ -4,6 +4,7 @@ import {fetchTasks} from '../actions/groupActions'
 import {Link} from 'react-router'
 
 import TaskEntry from './task_entry'
+import AddTaskForm from './add_task_form'
 
 class GroupDetail extends Component {
   componentWillMount() {
@@ -25,6 +26,9 @@ class GroupDetail extends Component {
         <ul>
           {this.renderTasks()}
         </ul>
+        <div>
+          {this.props.children}
+        </div>
       </div>
     )
   }
