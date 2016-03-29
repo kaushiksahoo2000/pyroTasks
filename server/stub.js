@@ -44,10 +44,32 @@ api.post('/login', function(req, res){
   }
 })
 
+//adding a new group
+api.post('/groups', function(req, res){
+  console.log("this is the request", req.body);
+  console.log('Successful addition to groups');
+  res.sendStatus(201)
+})
+
+//joining a new group
+api.put('/group/:groupid', function(req, res){
+  console.log("this is the request", req.body);
+  console.log('Successfully joined the group');
+  res.sendStatus(201)
+})
+
 // get all the groups a user belongs to
 api.get('/groups', function(req, res){
   console.log('Serving up groups');
   res.send(storage.groups);
+})
+
+//adding tasks to a specific group
+
+api.post('/group/:groupid', function(req, res){
+  console.log("this is the request", req.body)
+  console.log('Successfully addded task to group');
+  res.sendStatus(201)
 })
 
 // get all the tasks in a specific group
