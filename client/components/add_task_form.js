@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import {reduxForm} from 'redux-form'
 
 import {Link} from 'react-router'
-import {addTask} from '../actions/groupActions'
+import {addTask, fetchTasks} from '../actions/groupActions'
 
 class AddTaskForm extends Component {
   static contextTypes = {
@@ -10,9 +10,10 @@ class AddTaskForm extends Component {
   }
 
   onSubmit(taskAddition){
-    this.props.addTask(taskAddition)
+    this.props.addTask(taskAddition, this.props.params.groupid)
     .then(() => {
-      this.context.router.push(`/group/${this.props.params.groupid}`)
+      this.context.router.push(`/groups/${this.props.params.groupid}`)
+      this.props.fetchTasks(this.props.params.groupid)
     })
   }
 
@@ -62,4 +63,4 @@ export default reduxForm({
   form: "AddTaskForm",
   fields: ['task_name', 'assignees', 'due_date', 'owner'],
   validate
-}, null, {addTask} )(AddTaskForm)
+}, null, {addTask, fetchTasks})(AddTaskForm)

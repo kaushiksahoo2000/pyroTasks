@@ -67,8 +67,11 @@ api.get('/groups', function(req, res){
 //adding tasks to a specific group
 
 api.post('/group/:groupid', function(req, res){
-  console.log("this is the request", req.body)
+  console.log("Request Body", req.body, storage);
+  // console.log("Group ID", req.params.groupid)
   console.log('Successfully addded task to group');
+  storage.tasks[req.params.groupid].push({id: 400, name: req.body.task_name, owner: req.body.owner});
+  console.log('this is proper storage tasks', storage.tasks[req.params.groupid]);
   res.sendStatus(201)
 })
 

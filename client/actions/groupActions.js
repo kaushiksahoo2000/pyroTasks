@@ -13,7 +13,7 @@ export function fetchTasks (id) {
   }
 }
 
-export function addTask (id, props) {
+export function addTask (props, id) {
   const request = Axios.post(`${ROOT_URL}/group/${id}`, props)
   return {
     type: ADD_TASK,
