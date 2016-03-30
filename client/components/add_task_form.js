@@ -12,7 +12,7 @@ class AddTaskForm extends Component {
   onSubmit(taskAddition){
     this.props.addTask(taskAddition)
     .then(() => {
-      this.context.router.push('/group/:groupid')
+      this.context.router.push(`/group/${this.props.params.groupid}`)
     })
   }
 

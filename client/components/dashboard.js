@@ -11,22 +11,24 @@ class Dashboard extends Component {
   }
 
   renderGroups() {
-    return this.props.groups.map((group) => {
-      return (
-        <GroupEntry group={group} key={group.id}/>
-      )
-    })
+    if(this.props.groups.length === 0) return (<p>You are not in any groups yet.</p>)
+    else {
+      return this.props.groups.map((group) => {
+        return (
+          <GroupEntry group={group} key={group.id}/>
+        )
+      })
+    }
   }
 
   render() {
     return (
       <div>
         <h3>Groups</h3>
-        <ul>
-          {this.renderGroups()}
-        </ul>
-        <Link to='/creategroup'><button>Create Group</button></Link>
-        <Link to='/joingroup'><button>Join Group</button></Link>
+        {this.renderGroups()}
+        {this.props.children}
+        <Link to='/dashboard/creategroup'><button>Create Group</button></Link>
+        <Link to='/dashboard/joingroup'><button>Join Group</button></Link>
       </div>
     )
   }

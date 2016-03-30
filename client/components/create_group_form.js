@@ -26,10 +26,10 @@ class CreateGroupForm extends Component {
           <div>{group_name.touched ? group_name.error : ''}</div>
         </div>
 
-        <div>
+        {/*<div>
           <input type="text" {...members} placeholder='Members'/>
           <div>{members.touched ? members.error : ''}</div>
-        </div>
+        </div>*/}
 
         <button type="submit">Create Group</button>
 
@@ -41,7 +41,7 @@ class CreateGroupForm extends Component {
 function validate(values) {
   const errors = {}
   if(!values.group_name) errors.group_name = 'Please enter a group name'
-  if(!values.members) errors.members = 'Please include members'
+  // if(!values.members) errors.members = 'Please include members'
   return errors
 }
 

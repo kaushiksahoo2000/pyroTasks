@@ -24,9 +24,9 @@ var storage = {
       // Empty Tasklist for Group3
     ]
   ],
-  100: {id: 1, name: 'Alpha Task1', owner: 'John Smith'},
-  200: {id: 2, name: 'Alpha Task2', owner: 'Jim Johnson'},
-  300: {id: 3, name: 'Bravo Task1', owner: 'Jane Smith'},
+  100: {id: 100, name: 'Alpha Task1', owner: 'John Smith'},
+  200: {id: 200, name: 'Alpha Task2', owner: 'Jim Johnson'},
+  300: {id: 300, name: 'Bravo Task1', owner: 'Jane Smith'},
 }
 
 api.post('/signup', function(req, res){

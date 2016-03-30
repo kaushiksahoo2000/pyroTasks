@@ -29,6 +29,7 @@ class GroupDetail extends Component {
         <div>
           {this.props.children}
         </div>
+        <Link to={`/groups/${this.props.params.groupid}/createtask`}>Create New Task</Link>
       </div>
     )
   }
