@@ -12,6 +12,7 @@ class GroupDetail extends Component {
   }
 
   renderTasks() {
+    if(this.props.tasks.length === 0) return <p>Sorry, there are no tasks in this group</p>
     return this.props.tasks.map((task) => {
       return (
         <TaskEntry task={task} key={task.id}/>
@@ -23,9 +24,9 @@ class GroupDetail extends Component {
     return (
       <div>
         <h3>Tasks</h3>
-        <ul>
+        {/*<ul>*/}
           {this.renderTasks()}
-        </ul>
+        {/*</ul>*/}
         <div>
           {this.props.children}
         </div>
