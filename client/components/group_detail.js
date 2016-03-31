@@ -34,9 +34,7 @@ class GroupDetail extends Component {
         <h3>Tasks</h3>
           {this.renderTasks()}
         <div>
-        <ReactAnimate transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
           {this.props.children}
-        </ReactAnimate>
         </div>
         <Link to={`/groups/${this.props.params.groupid}/createtask`}>Create New Task</Link>
       </div>

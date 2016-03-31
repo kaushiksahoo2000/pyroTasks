@@ -1,19 +1,19 @@
-.example-enter {
-  opacity: 0.01;
+.showForm-enter {
+  transform: translate(100%, 0);
 }
 
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
+.showForm-enter.showForm-enter-active {
+  transform: translate(0, 0);
+  transition: transform 500ms ease-in;
 }
 
-.example-leave {
-  opacity: 1;
+.showForm-leave {
+  transform: translate(0, 0);
 }
 
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
+.showForm-leave.showForm-leave-active {
+  transform: translate(100%, 0);
+  transition: transform 300ms ease-in;
 }
 
 body {
@@ -21,17 +21,88 @@ body {
 }
 
 .btn {
+  background: none;
+  border: none;
+  outline: none;
   text-decoration: none;
   font-size: 50px;
   color: rgb(252, 73, 30);
   padding: 0 20px;
 }
 
+.btn-invert {
+  background: none;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  font-size: 50px;
+  color: white;
+  padding: 0 20px;
+}
+
+.btn-group {
+  margin: 50px 0;
+}
+
+li.entry {
+  list-style: none;
+  outline: none;
+  border: none;
+  font-size: 50px;
+}
+a {
+  text-decoration: none;
+  padding: 0 20px;
+}
+
+.heading {
+  font-size: 50px;
+  padding: 0 20px;
+  margin: 50px 0;
+}
+
 .biginput {
+  background: none;
   font-size: 50px;
   border: none;
   outline: none;
   padding: 0 20px;
+}
+
+.biginput-invert {
+  padding: 0 20px;
+}
+
+.biginput-invert, .biginput-invert::-webkit-input-placeholder {
+  background: none;
+  color: white;
+  font-size: 50px;
+  border: none;
+  outline: none;
+}
+
+.error-input {
+  padding: 0 20px;
+}
+
+form.form-modal {
+  top: 0;
+  left: 200px;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1000;
+  position: fixed;
+  display: block;
+  background: rgb(252,73,30);
+  background: -moz-linear-gradient(-45deg, rgba(252,73,30,1) 0%, rgba(249,156,109,1) 100%);
+  background: -webkit-linear-gradient(-45deg, rgba(252,73,30,1) 0%,rgba(249,156,109,1) 100%);
+  background: linear-gradient(135deg, rgba(252,73,30,1) 0%,rgba(249,156,109,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fc491e', endColorstr='#f99c6d',GradientType=1 );
+  -webkit-box-shadow: 0px 0px 100px 0px rgba(0,0,0,0.50);
+  -moz-box-shadow: 0px 0px 100px 0px rgba(0,0,0,0.50);
+  box-shadow: 0px 0px 100px 0px rgba(0,0,0,0.50);
 }
 
 .hvr-bounce-to-left {

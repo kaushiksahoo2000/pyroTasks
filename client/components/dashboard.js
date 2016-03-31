@@ -2,6 +2,8 @@ import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {fetchGroups} from '../actions/dashboardActions'
 import {Link} from 'react-router'
+import ReactAnimate from 'react-addons-css-transition-group'
+
 
 import GroupEntry from './group_entry'
 
@@ -32,11 +34,15 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <h3>Groups</h3>
+        <p className="heading">Groups</p>
         {this.renderGroups()}
-        {this.props.children}
-        <Link to='/dashboard/creategroup'><button>Create Group</button></Link>
-        <Link to='/dashboard/joingroup'><button>Join Group</button></Link>
+        <ReactAnimate transitionName="showForm" transitionEnterTimeout={640} transitionLeaveTimeout={640}>
+          {this.props.children}
+        </ReactAnimate>
+        <div className="btn-group">
+          <Link to='/dashboard/creategroup' className="btn hvr-bounce-to-left">Create Group</Link><br/>
+          <Link to='/dashboard/joingroup' className="btn hvr-bounce-to-left">Join Group</Link>
+        </div>
       </div>
     )
   }

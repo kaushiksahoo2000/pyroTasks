@@ -23,20 +23,20 @@ class SignupForm extends Component {
 
         <div>
           <input type="text" {...name} placeholder='name' className="biginput"/>
-          <div>{name.touched ? name.error : ''}</div>
+          <div className="error-input">{name.touched ? name.error : ''}</div>
         </div>
 
         <div>
           <input type="text" {...email} placeholder='email' className="biginput"/>
-          <div>{email.touched ? email.error : ''}</div>
+          <div className="error-input">{email.touched ? email.error : ''}</div>
         </div>
 
         <div>
           <input type="password" {...password} placeholder='password' className="biginput"/>
-          <div>{password.touched ? password.error : ''}</div>
+          <div className="error-input">{password.touched ? password.error : ''}</div>
         </div>
 
-        <div className="btn hvr-bounce-to-left">Submit</div>
+        <button type="submit" className="btn hvr-bounce-to-left">Submit</button>
 
       </form>
     )
