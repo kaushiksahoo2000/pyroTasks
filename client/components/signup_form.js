@@ -22,21 +22,21 @@ class SignupForm extends Component {
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
         <div>
-          <input type="text" {...name} placeholder='name'/>
+          <input type="text" {...name} placeholder='name' className="biginput"/>
           <div>{name.touched ? name.error : ''}</div>
         </div>
 
         <div>
-          <input type="text" {...email} placeholder='email'/>
+          <input type="text" {...email} placeholder='email' className="biginput"/>
           <div>{email.touched ? email.error : ''}</div>
         </div>
 
         <div>
-          <input type="password" {...password} placeholder='password'/>
+          <input type="password" {...password} placeholder='password' className="biginput"/>
           <div>{password.touched ? password.error : ''}</div>
         </div>
 
-        <button type="submit">Submit</button>
+        <div className="btn hvr-bounce-to-left">Submit</div>
 
       </form>
     )

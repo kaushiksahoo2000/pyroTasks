@@ -11,19 +11,21 @@ class LoginForm extends Component {
 
   onSubmit(loginData){
     this.props.login(loginData)
-    .then(() => {
-      this.context.router.push('/dashboard')
+    .then((response) => {
+      if(response.payload.status < 300){
+        this.context.router.push('/dashboard')
+      }
     })
   }
 
   render() {
-    const {fields:{email, password}, handleSubmit} = this.props
+    const {fields:{username, password}, handleSubmit} = this.props
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
         <div>
-          <input type="text" {...email} placeholder='email'/>
-          <div>{email.touched ? email.error : ''}</div>
+          <input type="text" {...username} placeholder='username'/>
+          <div>{username.touched ? username.error : ''}</div>
         </div>
 
         <div>
@@ -40,13 +42,13 @@ class LoginForm extends Component {
 
 function validate(values) {
   const errors = {}
-  if(!values.email) errors.email = 'Please enter a valid email'
+  if(!values.username) errors.username = 'Please enter a valid username'
   if(!values.password) errors.password = 'Please enter a password'
   return errors
 }
 
 export default reduxForm({
   form: "LoginForm",
-  fields: ['email', 'password'],
+  fields: ['username', 'password'],
   validate
 }, null, {login} )(LoginForm)

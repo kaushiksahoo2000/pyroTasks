@@ -35,6 +35,7 @@ api.post('/signup', function(req, res){
 })
 
 api.post('/login', function(req, res){
+  console.log("login credentials from login form", req.body.username, req.body.password);
   if(req.body.username === storage.username && req.body.password === storage.password){
     console.log('Successful login');
     res.sendStatus(200)

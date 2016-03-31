@@ -9,8 +9,8 @@ export default class AuthView extends Component {
   render() {
     return (
       <div>
-        <Link to='/signup'><button>Sign Up</button></Link>
-        <Link to='/login'><button>Login</button></Link>
+        <Link to='/signup' className="btn hvr-bounce-to-left">Sign Up</Link><br/>
+        <Link to='/login' className="btn hvr-bounce-to-left">Login</Link>
       </div>
     )
   }
