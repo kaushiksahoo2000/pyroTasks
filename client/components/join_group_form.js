@@ -12,22 +12,22 @@ class JoinGroupForm extends Component {
   onSubmit(joinGroupData){
     this.props.joinGroup(joinGroupData)
     .then(() => {
-      this.context.router.push('/group/:groupid')
+      this.context.router.push(`/groups/${joinGroupData.group_id}`)
     })
   }
 
   render() {
     const {fields:{group_id}, handleSubmit} = this.props
     return (
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="form-modal">
 
         <div>
-          <input type="text" {...group_id} placeholder='Group ID'/>
+          <input type="text" {...group_id} placeholder='Group ID' className="biginput-invert"/>
           <div>{group_id.touched ? group_id.error : ''}</div>
         </div>
-
-        <button type="submit">Join Group</button>
-
+        <div className="btn-group">
+          <button type="submit" className="btn-invert hvr-bounce-to-left">Join Group</button>
+        </div>
       </form>
     )
   }

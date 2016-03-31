@@ -1,5 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import {reduxForm} from 'redux-form'
+import ReactAnimate from 'react-addons-css-transition-group'
+
 
 import {Link} from 'react-router'
 import {createGroup} from '../actions/dashboardActions'
@@ -19,19 +21,20 @@ class CreateGroupForm extends Component {
   render() {
     const {fields:{group_name, members}, handleSubmit} = this.props
     return (
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="form-modal">
+        <p className="heading">New Group</p>
         <div>
-          <input type="text" {...group_name} placeholder='Group Name'/>
-          <div>{group_name.touched ? group_name.error : ''}</div>
+          <input type="text" {...group_name} placeholder='Group Name' className="biginput-invert"/>
+          <div className="error-input">{group_name.touched ? group_name.error : ''}</div>
         </div>
 
         {/*<div>
           <input type="text" {...members} placeholder='Members'/>
           <div>{members.touched ? members.error : ''}</div>
         </div>*/}
-
-        <button type="submit">Create Group</button>
+        <div className="btn-group">
+          <button type="submit" className="btn-invert hvr-bounce-to-left">Create</button>
+        </div>
 
       </form>
     )

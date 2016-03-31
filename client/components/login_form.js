@@ -22,18 +22,19 @@ class LoginForm extends Component {
     const {fields:{username, password}, handleSubmit} = this.props
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        <p className="heading">Login</p>
+          <div>
+            <input type="text" {...username} placeholder='username' className="biginput"/>
+            <div className="error-input">{username.touched ? username.error : ''}</div>
+          </div>
 
-        <div>
-          <input type="text" {...username} placeholder='username'/>
-          <div>{username.touched ? username.error : ''}</div>
+          <div>
+            <input type="password" {...password} placeholder='password' className="biginput"/>
+            <div className="error-input">{password.touched ? password.error : ''}</div>
+          </div>
+        <div className="btn-group">
+          <button type="submit" className="btn hvr-bounce-to-left">Submit</button>
         </div>
-
-        <div>
-          <input type="password" {...password} placeholder='password'/>
-          <div>{password.touched ? password.error : ''}</div>
-        </div>
-
-        <button type="submit">Submit</button>
 
       </form>
     )
