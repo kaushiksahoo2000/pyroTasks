@@ -1,10 +1,17 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 
 import {fetchTask} from '../actions/taskActions'
 
 class TaskDetail extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
   componentWillMount() {
+    if(!this.props.isAuth){
+      this.context.router.push('/login')
+    }
     this.props.fetchTask(this.props.params.taskid)
   }
 
@@ -26,7 +33,8 @@ class TaskDetail extends Component {
 export default connect(
   (state)=>{
     return {
-      task: state.tasks.task
+      task: state.tasks.task,
+      isAuth: state.isAuth
     }
   },
   {

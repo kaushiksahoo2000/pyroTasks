@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {fetchGroups} from '../actions/dashboardActions'
 import {Link} from 'react-router'
@@ -6,7 +6,15 @@ import {Link} from 'react-router'
 import GroupEntry from './group_entry'
 
 class Dashboard extends Component {
+
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
   componentWillMount() {
+    if(!this.props.isAuth){
+      this.context.router.push('/login')
+    }
     this.props.fetchGroups()
   }
 
@@ -39,7 +47,8 @@ class Dashboard extends Component {
 export default connect(
   (state)=>{
     return {
-      groups: state.groups.all
+      groups: state.groups.all,
+      isAuth: state.isAuth
     }
   },
   {

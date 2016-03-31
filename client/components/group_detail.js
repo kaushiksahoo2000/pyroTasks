@@ -1,13 +1,21 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {fetchTasks} from '../actions/groupActions'
 import {Link} from 'react-router'
+import ReactAnimate from 'react-addons-css-transition-group'
 
 import TaskEntry from './task_entry'
 import AddTaskForm from './add_task_form'
 
 class GroupDetail extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
   componentWillMount() {
+    if(!this.props.isAuth){
+      this.context.router.push('/login')
+    }
     this.props.fetchTasks(this.props.params.groupid)
   }
 
@@ -24,11 +32,11 @@ class GroupDetail extends Component {
     return (
       <div>
         <h3>Tasks</h3>
-        {/*<ul>*/}
           {this.renderTasks()}
-        {/*</ul>*/}
         <div>
+        <ReactAnimate transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
           {this.props.children}
+        </ReactAnimate>
         </div>
         <Link to={`/groups/${this.props.params.groupid}/createtask`}>Create New Task</Link>
       </div>
@@ -41,7 +49,8 @@ class GroupDetail extends Component {
 export default connect(
   (state)=>{
     return {
-      tasks: state.tasks.all
+      tasks: state.tasks.all,
+      isAuth: state.isAuth
     }
   },
   {
