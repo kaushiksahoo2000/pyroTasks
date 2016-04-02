@@ -20,7 +20,7 @@ class GroupDetail extends Component {
   }
 
   renderTasks() {
-    if(this.props.tasks.length === 0) return <p>Sorry, there are no tasks in this group</p>
+    if(this.props.tasks.length === 0) return <p className="err-msg">Sorry, there are no tasks in this group</p>
     return this.props.tasks.map((task) => {
       return (
         <TaskEntry task={task} key={task.id}/>
@@ -31,12 +31,14 @@ class GroupDetail extends Component {
   render() {
     return (
       <div>
-        <h3>Tasks</h3>
+        <p className="heading">Tasks</p>
           {this.renderTasks()}
-        <div>
+        <ReactAnimate transitionName="showForm" transitionEnterTimeout={640} transitionLeaveTimeout={640}>
           {this.props.children}
+        </ReactAnimate>
+        <div className="btn-group">
+          <Link to={`/groups/${this.props.params.groupid}/createtask`} className="btn hvr-bounce-to-left">Create Task</Link>
         </div>
-        <Link to={`/groups/${this.props.params.groupid}/createtask`}>Create New Task</Link>
       </div>
     )
   }

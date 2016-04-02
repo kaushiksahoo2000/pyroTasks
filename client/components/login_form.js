@@ -25,12 +25,12 @@ class LoginForm extends Component {
         <p className="heading">Login</p>
           <div>
             <input type="text" {...username} placeholder='username' className="biginput"/>
-            <div className="error-input">{username.touched ? username.error : ''}</div>
+            <div className="err-msg">{username.touched ? username.error : ''}</div>
           </div>
 
           <div>
             <input type="password" {...password} placeholder='password' className="biginput"/>
-            <div className="error-input">{password.touched ? password.error : ''}</div>
+            <div className="err-msg">{password.touched ? password.error : ''}</div>
           </div>
         <div className="btn-group">
           <button type="submit" className="btn hvr-bounce-to-left">Submit</button>

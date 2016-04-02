@@ -9,6 +9,7 @@ export default class AuthView extends Component {
   render() {
     return (
       <div>
+        <p className="heading">Pyro Tasks</p>
         <Link to='/signup' className="btn hvr-bounce-to-left">Sign Up</Link><br/>
         <Link to='/login' className="btn hvr-bounce-to-left">Login</Link>
       </div>

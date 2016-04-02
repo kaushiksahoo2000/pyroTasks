@@ -24,8 +24,8 @@ class CreateGroupForm extends Component {
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="form-modal">
         <p className="heading">New Group</p>
         <div>
-          <input type="text" {...group_name} placeholder='Group Name' className="biginput-invert"/>
-          <div className="error-input">{group_name.touched ? group_name.error : ''}</div>
+          <input type="text" {...group_name} placeholder='Name' className="biginput-invert"/>
+          <div className="err-msg">{group_name.touched ? group_name.error : ''}</div>
         </div>
 
         {/*<div>
@@ -33,7 +33,7 @@ class CreateGroupForm extends Component {
           <div>{members.touched ? members.error : ''}</div>
         </div>*/}
         <div className="btn-group">
-          <button type="submit" className="btn-invert hvr-bounce-to-left">Create</button>
+          <button type="submit" className="btn-invert hvr-bounce-to-left-invert">Create</button>
         </div>
 
       </form>
