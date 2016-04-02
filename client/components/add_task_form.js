@@ -20,29 +20,31 @@ class AddTaskForm extends Component {
   render() {
     const {fields:{task_name, assignees, due_date, owner}, handleSubmit} = this.props
     return (
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="form-modal">
+        <p className="heading">New Task</p>
         <div>
-          <input type="text" {...task_name} placeholder='Task Name'/>
-          <div>{name.touched ? name.error : ''}</div>
+          <input type="text" {...task_name} placeholder='Task Name' className="biginput-invert"/>
+          <div className="err-msg">{name.touched ? name.error : ''}</div>
         </div>
 
         <div>
-          <input type="text" {...assignees} placeholder='Assignees'/>
-          <div>{assignees.touched ? assignees.error : ''}</div>
+          <input type="text" {...assignees} placeholder='Assignees' className="biginput-invert"/>
+          <div className="err-msg">{assignees.touched ? assignees.error : ''}</div>
         </div>
 
         <div>
-          <input type="date" {...due_date} placeholder='Due Date'/>
-          <div>{due_date.touched ? due_date.error : ''}</div>
+          <input type="date" {...due_date} placeholder='Due Date' className="biginput-invert"/>
+          <div className="err-msg">{due_date.touched ? due_date.error : ''}</div>
         </div>
 
         <div>
-          <input type="text" {...owner} placeholder='Owner'/>
-          <div>{owner.touched ? owner.error : ''}</div>
+          <input type="text" {...owner} placeholder='Owner' className="biginput-invert"/>
+          <div className="err-msg">{owner.touched ? owner.error : ''}</div>
         </div>
 
-        <button type="submit">Add Task</button>
+        <div className="btn-group">
+          <button type="submit" className="btn-invert hvr-bounce-to-left-invert">Add Task</button>
+        </div>
 
       </form>
     )

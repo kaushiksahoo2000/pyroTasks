@@ -20,13 +20,13 @@ class JoinGroupForm extends Component {
     const {fields:{group_id}, handleSubmit} = this.props
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="form-modal">
-
+        <p className="heading">Join Group</p>
         <div>
-          <input type="text" {...group_id} placeholder='Group ID' className="biginput-invert"/>
-          <div>{group_id.touched ? group_id.error : ''}</div>
+          <input type="text" {...group_id} placeholder='Group #' className="biginput-invert"/>
+          <div className="err-msg">{group_id.touched ? group_id.error : ''}</div>
         </div>
         <div className="btn-group">
-          <button type="submit" className="btn-invert hvr-bounce-to-left">Join Group</button>
+          <button type="submit" className="btn-invert hvr-bounce-to-left-invert">Join</button>
         </div>
       </form>
     )
