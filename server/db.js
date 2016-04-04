@@ -1,7 +1,7 @@
 var mysql = require('mysql');
 var fs = require('fs');
 
-var db = mysql.createPool({
+var db = mysql.createConnection({
   connectionLimit: 15,
   host: 'localhost',
   user: require('./config.js').db.user,
@@ -20,12 +20,12 @@ fs.readFile(__dirname + '/setup.sql', 'utf-8', function(err,data){
   } else {
     data = data.split(";");
     data.pop();
-    data.forEach(function(item){
+    data.forEach(function(item, i){
       db.query(item, function(err, results, fields){
         if(err){
-          cnosole.error(err);
+          console.error(err);
         } else {
-          console.log('SQL Setup');
+          console.log(i + 1 + '. SQL Setup');
         }
       });
     });

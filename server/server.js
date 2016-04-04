@@ -10,7 +10,7 @@ app.use(cors())
 
 app.use(express.static(__dirname + '/../client'))
 
-var router = require('./stub.js') // TODO: switch to router.js for full functionality
+var router = require('./routes.js') // TODO: switch to router.js for full functionality
 app.use("/api", router)
 
 app.get('*', function (request, response){
