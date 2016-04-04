@@ -84,3 +84,4 @@ client/bower_components
 
 node_modules/
 **/dist/**
+config.js

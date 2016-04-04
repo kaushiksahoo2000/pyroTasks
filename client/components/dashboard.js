@@ -21,8 +21,8 @@ class Dashboard extends Component {
   }
 
   renderGroups() {
-    if(this.props.groups.length === 0) return (<p>You are not in any groups yet.</p>)
-    else {
+    if(this.props.groups.length === 0 || !Array.isArray(this.props.groups)) return (<p>You are not in any groups yet.</p>)
+    else if(this.props.groups.length !== 0 && Array.isArray(this.props.groups)){
       return this.props.groups.map((group) => {
         return (
           <GroupEntry group={group} key={group.id}/>
